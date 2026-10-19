@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nnova Soluções Imobiliárias | Imóveis para venda e locação em Salvador</title><meta name="description" content="Imóveis para venda e locação em Salvador e região. Apartamentos, casas, coberturas e salas com atendimento da Nnova.">
+<meta property="og:title" content="Nnova Soluções Imobiliárias | Imóveis para venda e locação em Salvador"><meta property="og:description" content="Imóveis para venda e locação em Salvador e região. Apartamentos, casas, coberturas e salas com atendimento da Nnova."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css"></head><body>
+<div class="topbar"><div class="wrap"><span>CRECI <span data-site="creci">1182J</span></span>
+<span><a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></span></div></div>
+<header class="topo"><div class="wrap topo-in">
+<a class="marca" href="index.html"><b>Nnova</b><span>Soluções Imobiliárias</span></a>
+<nav aria-label="Principal"><a href="imoveis.html?finalidade=Comprar">Comprar</a><a href="imoveis.html?finalidade=Alugar">Alugar</a><a href="index.html#servicos">Serviços</a><a href="#contato">Contato</a></nav>
+<a class="btn" data-wa="vendas" data-msg="Olá! Quero anunciar meu imóvel com a Nnova." href="https://wa.me/5571992127195">Anuncie seu imóvel</a>
+</div></header>
+<main>
+<div class="hero"><svg class="sky" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#fff"><rect x="40" y="140" width="90" height="160"/><rect x="150" y="80" width="70" height="220"/><rect x="240" y="170" width="110" height="130"/><rect x="380" y="50" width="80" height="250"/><rect x="480" y="120" width="100" height="180"/><rect x="610" y="90" width="70" height="210"/><rect x="700" y="160" width="120" height="140"/><rect x="850" y="60" width="90" height="240"/><rect x="960" y="130" width="80" height="170"/><rect x="1060" y="100" width="110" height="200"/></g></svg><div class="wrap"><h1>Viva uma Nnova experiência imobiliária</h1>
+<p class="sub">Imóveis para venda e locação em Salvador e região.</p>
+<form class="busca" action="imoveis.html" method="get">
+<label>Pretensão<select name="finalidade"><option value="">Comprar ou alugar</option><option>Comprar</option><option>Alugar</option></select></label>
+<label>Tipo de imóvel<select name="tipo"><option value="">Todos</option><option>Apartamento</option><option>Casa</option><option>Cobertura</option><option>Sala</option><option>Studio</option><option>Terreno</option></select></label>
+<label>Bairro, condomínio ou código<input type="search" name="q" placeholder="Ex.: Pituba ou NN1001"></label>
+<button class="btn" type="submit">Encontrar imóvel</button></form></div></div>
+<section><div class="wrap"><div class="sec-head"><h2>Imóveis em destaque</h2><a class="btn alt" href="imoveis.html">Ver todos os imóveis</a></div>
+<div class="grid" id="destaques"><p class="vazio">Carregando imóveis...</p></div></div></section>
+<section class="servicos" id="servicos"><div class="wrap"><h2 style="margin-bottom:1.5rem">Como podemos ajudar</h2><div class="cols3">
+<div class="bloco"><h3>Atendimento VIP</h3><p>Conte como você quer o seu imóvel e nós encontramos para você.</p><a class="btn" data-wa="vendas" data-msg="Olá! Quero encomendar um imóvel." href="https://wa.me/5571992127195">Encomende seu imóvel</a></div>
+<div class="bloco"><h3>Anuncie seu imóvel</h3><p>Anunciamos em portais e enviamos feedbacks contínuos sobre o anúncio.</p><a class="btn" data-wa="vendas" data-msg="Olá! Quero anunciar meu imóvel." href="https://wa.me/5571992127195">Anuncie aqui</a></div>
+<div class="bloco"><h3>Aluguel digital</h3><p>Transforme a sua experiência na locação de imóveis.</p><a class="btn" data-wa="locacao" data-msg="Olá! Quero alugar com a Nnova." href="https://wa.me/5571996846741">Quero alugar</a></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="margin-bottom:1.5rem">Bairros com imóveis</h2><div class="chips" id="bairros"></div></div></section>
+</main>
+<script>
+Nnova.load().then(({imoveis})=>{
+  const d=imoveis.filter(i=>i.destaque).slice(0,6);
+  const lista=d.length?d:imoveis.slice(0,6);
+  document.getElementById('destaques').innerHTML=lista.length?lista.map(Nnova.card).join(''):'<p class="vazio">Nenhum imóvel cadastrado ainda.</p>';
+  const cont={};imoveis.forEach(i=>{if(i.bairro)cont[i.bairro]=(cont[i.bairro]||0)+1});
+  document.getElementById('bairros').innerHTML=Object.keys(cont).sort((a,b)=>cont[b]-cont[a]||a.localeCompare(b,'pt-BR')).map(b=>'<a class="chip" href="imoveis.html?bairro='+encodeURIComponent(b)+'">'+Nnova.esc(b)+' ('+cont[b]+')</a>').join('');
+}).catch(e=>{document.getElementById('destaques').innerHTML='<p class="vazio">'+Nnova.esc(e.message)+'</p>'});
+</script>
+<footer class="rodape" id="contato"><div class="wrap"><div class="cols3">
+<div><h3 data-site="nome">Nnova Soluções Imobiliárias</h3><p>CRECI <span data-site="creci">1182J</span></p><p data-site="endereco">Rua Rubem Berta, 254, Pituba, Salvador/BA</p><p data-site="horario">Segunda a sexta, 8h às 18h</p></div>
+<div><h3>Fale com a gente</h3><p>Telefone: <a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></p>
+<p><a data-wa="locacao" data-msg="Olá! Quero falar sobre locação." href="https://wa.me/5571996846741">WhatsApp locação</a></p>
+<p><a data-wa="vendas" data-msg="Olá! Quero falar sobre compra ou venda." href="https://wa.me/5571992127195">WhatsApp vendas</a></p></div>
+<div><h3>Redes sociais</h3><p><a data-link="instagram" href="https://www.instagram.com/nnovaimobiliaria/">Instagram</a></p><p><a data-link="facebook" href="https://www.facebook.com/NNOVAIMOBILIARIA">Facebook</a></p></div>
+</div><p class="legal">Site de teste. Os imóveis exibidos são exemplos fictícios.</p></div></footer>
+<script src="assets/js/app.js"></script>
+</body></html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imóvel | Nnova Soluções Imobiliárias</title><meta name="description" content="Detalhes do imóvel.">
+<meta property="og:title" content="Imóvel | Nnova Soluções Imobiliárias"><meta property="og:description" content="Detalhes do imóvel."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css"></head><body>
+<div class="topbar"><div class="wrap"><span>CRECI <span data-site="creci">1182J</span></span>
+<span><a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></span></div></div>
+<header class="topo"><div class="wrap topo-in">
+<a class="marca" href="index.html"><b>Nnova</b><span>Soluções Imobiliárias</span></a>
+<nav aria-label="Principal"><a href="imoveis.html?finalidade=Comprar">Comprar</a><a href="imoveis.html?finalidade=Alugar">Alugar</a><a href="index.html#servicos">Serviços</a><a href="#contato">Contato</a></nav>
+<a class="btn" data-wa="vendas" data-msg="Olá! Quero anunciar meu imóvel com a Nnova." href="https://wa.me/5571992127195">Anuncie seu imóvel</a>
+</div></header>
+<main><section><div class="wrap" id="det"><p class="vazio">Carregando imóvel...</p></div></section></main>
+<script>
+const {esc}=Nnova;
+Nnova.load().then(({site,imoveis})=>{
+  const c=(new URLSearchParams(location.search).get('c')||'').toLowerCase();
+  const i=imoveis.find(x=>String(x.codigo).toLowerCase()===c);
+  const box=document.getElementById('det');
+  if(!i){box.innerHTML='<p class="vazio">Imóvel não encontrado. <a href="imoveis.html">Ver todos os imóveis</a></p>';return}
+  document.title=i.titulo+' | Nnova';
+  const fotos=(i.fotos&&i.fotos.length)?i.fotos:[Nnova.SEM_FOTO];
+  const num=i.finalidade==='Alugar'?site.whatsapp_locacao:site.whatsapp_vendas;
+  const msg='Olá! Tenho interesse no imóvel '+i.codigo+' - '+i.titulo+' ('+Nnova.local(i)+').';
+  const fichas=[['Área',i.area>0&&i.area+' m²'],['Quartos',i.quartos>0&&i.quartos],['Suítes',i.suites>0&&i.suites],['Banheiros',i.banheiros>0&&i.banheiros],['Vagas',i.vagas>0&&i.vagas]].filter(f=>f[1]);
+  const sem=imoveis.filter(x=>x.codigo!==i.codigo&&(x.bairro===i.bairro||(x.tipo===i.tipo&&x.finalidade===i.finalidade))).slice(0,3);
+  box.innerHTML='<p style="margin-bottom:1rem"><a href="imoveis.html">Voltar para os imóveis</a></p><div class="det"><div>'+
+   '<div class="gal-main"><img id="gm" src="'+esc(fotos[0])+'" alt="'+esc(i.titulo)+'"></div>'+
+   (fotos.length>1?'<div class="thumbs">'+fotos.map((f,n)=>'<button class="th" type="button" aria-label="Foto '+(n+1)+'"'+(n===0?' aria-current="true"':'')+' data-src="'+esc(f)+'"><img src="'+esc(f)+'" alt=""></button>').join('')+'</div>':'')+
+   '<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin:1.5rem 0 .3rem">'+esc(i.titulo)+'</h1><p class="local">'+esc(Nnova.local(i))+' (código '+esc(i.codigo)+')</p>'+
+   '<dl class="fichas">'+fichas.map(f=>'<div><dt>'+f[0]+'</dt><dd>'+esc(f[1])+'</dd></div>').join('')+'</dl>'+
+   '<div class="texto"><h2 style="font-size:1.4rem;margin-bottom:.8rem">Sobre o imóvel</h2>'+String(i.descricao||'').split(/\n+/).filter(Boolean).map(t=>'<p>'+esc(t)+'</p>').join('')+'</div></div>'+
+   '<aside class="lateral"><div><span class="tag" style="background:var(--mist)">'+esc(i.finalidade)+(i.status&&i.status!=='Disponível'?' ('+esc(i.status)+')':'')+'</span></div><div class="preco">'+esc(Nnova.preco(i))+'</div>'+
+   '<a class="btn full" href="'+Nnova.wa(num,msg)+'">Falar no WhatsApp</a><a class="btn alt full" href="tel:'+String(site.telefone).replace(/\D/g,'')+'">Ligar agora</a></aside></div>'+
+   (sem.length?'<h2 style="margin:3rem 0 1.2rem">Imóveis parecidos</h2><div class="grid">'+sem.map(Nnova.card).join('')+'</div>':'');
+  document.querySelectorAll('.th').forEach(b=>b.addEventListener('click',()=>{document.getElementById('gm').src=b.dataset.src;document.querySelectorAll('.th').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','true')}));
+}).catch(e=>{document.getElementById('det').innerHTML='<p class="vazio">'+esc(e.message)+'</p>'});
+</script>
+<footer class="rodape" id="contato"><div class="wrap"><div class="cols3">
+<div><h3 data-site="nome">Nnova Soluções Imobiliárias</h3><p>CRECI <span data-site="creci">1182J</span></p><p data-site="endereco">Rua Rubem Berta, 254, Pituba, Salvador/BA</p><p data-site="horario">Segunda a sexta, 8h às 18h</p></div>
+<div><h3>Fale com a gente</h3><p>Telefone: <a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></p>
+<p><a data-wa="locacao" data-msg="Olá! Quero falar sobre locação." href="https://wa.me/5571996846741">WhatsApp locação</a></p>
+<p><a data-wa="vendas" data-msg="Olá! Quero falar sobre compra ou venda." href="https://wa.me/5571992127195">WhatsApp vendas</a></p></div>
+<div><h3>Redes sociais</h3><p><a data-link="instagram" href="https://www.instagram.com/nnovaimobiliaria/">Instagram</a></p><p><a data-link="facebook" href="https://www.facebook.com/NNOVAIMOBILIARIA">Facebook</a></p></div>
+</div><p class="legal">Site de teste. Os imóveis exibidos são exemplos fictícios.</p></div></footer>
+<script src="assets/js/app.js"></script>
+</body></html>

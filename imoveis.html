@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imóveis para comprar e alugar | Nnova</title><meta name="description" content="Veja apartamentos, casas, coberturas e salas à venda e para alugar em Salvador.">
+<meta property="og:title" content="Imóveis para comprar e alugar | Nnova"><meta property="og:description" content="Veja apartamentos, casas, coberturas e salas à venda e para alugar em Salvador."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css"></head><body>
+<div class="topbar"><div class="wrap"><span>CRECI <span data-site="creci">1182J</span></span>
+<span><a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></span></div></div>
+<header class="topo"><div class="wrap topo-in">
+<a class="marca" href="index.html"><b>Nnova</b><span>Soluções Imobiliárias</span></a>
+<nav aria-label="Principal"><a href="imoveis.html?finalidade=Comprar">Comprar</a><a href="imoveis.html?finalidade=Alugar">Alugar</a><a href="index.html#servicos">Serviços</a><a href="#contato">Contato</a></nav>
+<a class="btn" data-wa="vendas" data-msg="Olá! Quero anunciar meu imóvel com a Nnova." href="https://wa.me/5571992127195">Anuncie seu imóvel</a>
+</div></header>
+<main><section><div class="wrap"><h1 style="font-size:clamp(1.8rem,4vw,2.8rem)">Imóveis</h1>
+<form class="filtros" id="f" onsubmit="return false">
+<label>Pretensão<select id="finalidade"><option value="">Comprar ou alugar</option><option>Comprar</option><option>Alugar</option></select></label>
+<label>Tipo<select id="tipo"><option value="">Todos</option></select></label>
+<label>Bairro<select id="bairro"><option value="">Todos</option></select></label>
+<label>Busca<input type="search" id="q" placeholder="Código, condomínio ou palavra"></label>
+<label>Ordenar<select id="ord"><option value="">Mais recentes</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select></label>
+</form><p id="cont" style="margin-bottom:1rem;color:var(--muted)" aria-live="polite"></p>
+<div class="grid" id="lista"></div></div></section></main>
+<script>
+const $=id=>document.getElementById(id);
+Nnova.load().then(({imoveis})=>{
+  Nnova.uniq(imoveis,'tipo').forEach(t=>$('tipo').add(new Option(t,t)));
+  Nnova.uniq(imoveis,'bairro').forEach(b=>$('bairro').add(new Option(b,b)));
+  const p=new URLSearchParams(location.search);
+  ['finalidade','tipo','bairro','q','ord'].forEach(k=>{if(p.get(k))$(k).value=p.get(k)});
+  function render(){
+    const v={finalidade:$('finalidade').value,tipo:$('tipo').value,bairro:$('bairro').value,q:Nnova.norm($('q').value.trim()),ord:$('ord').value};
+    let r=imoveis.filter(i=>(!v.finalidade||i.finalidade===v.finalidade)&&(!v.tipo||i.tipo===v.tipo)&&(!v.bairro||i.bairro===v.bairro)&&(!v.q||Nnova.norm([i.codigo,i.titulo,i.bairro,i.cidade,i.condominio,i.descricao].join(' ')).includes(v.q)));
+    r=r.slice().reverse();
+    if(v.ord==='menor')r.sort((a,b)=>(a.preco||1e12)-(b.preco||1e12));
+    if(v.ord==='maior')r.sort((a,b)=>(b.preco||0)-(a.preco||0));
+    $('cont').textContent=r.length+(r.length===1?' imóvel encontrado':' imóveis encontrados');
+    $('lista').innerHTML=r.length?r.map(Nnova.card).join(''):'<p class="vazio" style="grid-column:1/-1">Nenhum imóvel com esses filtros. Tente remover algum filtro.</p>';
+    const q=new URLSearchParams();Object.entries(v).forEach(([k,x])=>{const val=k==='q'?$('q').value.trim():x;if(val)q.set(k,val)});
+    history.replaceState(null,'',q.toString()?'?'+q:location.pathname);
+  }
+  document.querySelectorAll('#f select,#f input').forEach(el=>el.addEventListener('input',render));
+  render();
+}).catch(e=>{$('lista').innerHTML='<p class="vazio">'+Nnova.esc(e.message)+'</p>'});
+</script>
+<footer class="rodape" id="contato"><div class="wrap"><div class="cols3">
+<div><h3 data-site="nome">Nnova Soluções Imobiliárias</h3><p>CRECI <span data-site="creci">1182J</span></p><p data-site="endereco">Rua Rubem Berta, 254, Pituba, Salvador/BA</p><p data-site="horario">Segunda a sexta, 8h às 18h</p></div>
+<div><h3>Fale com a gente</h3><p>Telefone: <a data-tel href="tel:07135077777"><span data-site="telefone">(71) 3507-7777</span></a></p>
+<p><a data-wa="locacao" data-msg="Olá! Quero falar sobre locação." href="https://wa.me/5571996846741">WhatsApp locação</a></p>
+<p><a data-wa="vendas" data-msg="Olá! Quero falar sobre compra ou venda." href="https://wa.me/5571992127195">WhatsApp vendas</a></p></div>
+<div><h3>Redes sociais</h3><p><a data-link="instagram" href="https://www.instagram.com/nnovaimobiliaria/">Instagram</a></p><p><a data-link="facebook" href="https://www.facebook.com/NNOVAIMOBILIARIA">Facebook</a></p></div>
+</div><p class="legal">Site de teste. Os imóveis exibidos são exemplos fictícios.</p></div></footer>
+<script src="assets/js/app.js"></script>
+</body></html>

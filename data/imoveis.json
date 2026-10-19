@@ -1,0 +1,238 @@
+{
+  "imoveis": [
+    {
+      "publicado": true,
+      "codigo": "NN1001",
+      "titulo": "Apartamento de 3 quartos com suíte e varanda",
+      "finalidade": "Comprar",
+      "tipo": "Apartamento",
+      "status": "Disponível",
+      "bairro": "Pituba",
+      "cidade": "Salvador",
+      "preco": 780000,
+      "area": 112,
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 3,
+      "vagas": 2,
+      "descricao": "Sala ampla com varanda, cozinha planejada e dependência completa.\nPrédio com portaria 24h, área de lazer e duas vagas cobertas.",
+      "fotos": [
+        "/assets/imoveis/predio-1.svg",
+        "/assets/imoveis/predio-2.svg"
+      ],
+      "destaque": true
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1002",
+      "titulo": "Apartamento de 2 quartos perto do metrô",
+      "finalidade": "Alugar",
+      "tipo": "Apartamento",
+      "status": "Disponível",
+      "bairro": "Pituba",
+      "cidade": "Salvador",
+      "preco": 3200,
+      "area": 68,
+      "quartos": 2,
+      "suites": 1,
+      "banheiros": 2,
+      "vagas": 1,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/predio-2.svg"
+      ],
+      "destaque": true
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1003",
+      "titulo": "Casa em condomínio fechado com piscina",
+      "finalidade": "Comprar",
+      "tipo": "Casa",
+      "status": "Disponível",
+      "bairro": "Stella Maris",
+      "cidade": "Salvador",
+      "preco": 1950000,
+      "area": 320,
+      "quartos": 4,
+      "suites": 4,
+      "banheiros": 5,
+      "vagas": 4,
+      "descricao": "Casa de 2 pavimentos, área gourmet com piscina e jardim.\nCondomínio com segurança e acesso à praia.",
+      "fotos": [
+        "/assets/imoveis/casa-1.svg",
+        "/assets/imoveis/casa-1.svg"
+      ],
+      "destaque": true
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1004",
+      "titulo": "Cobertura duplex com vista para o mar",
+      "finalidade": "Comprar",
+      "tipo": "Cobertura",
+      "status": "Disponível",
+      "bairro": "Piatã",
+      "cidade": "Salvador",
+      "preco": 2400000,
+      "area": 280,
+      "quartos": 4,
+      "suites": 3,
+      "banheiros": 5,
+      "vagas": 3,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/cobertura-1.svg",
+        "/assets/imoveis/predio-1.svg"
+      ],
+      "destaque": true
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1005",
+      "titulo": "Sala comercial em centro empresarial",
+      "finalidade": "Alugar",
+      "tipo": "Sala",
+      "status": "Disponível",
+      "bairro": "Parque Bela Vista",
+      "cidade": "Salvador",
+      "preco": 2800,
+      "area": 42,
+      "quartos": 0,
+      "suites": 0,
+      "banheiros": 1,
+      "vagas": 1,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/sala-1.svg"
+      ],
+      "destaque": false
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1006",
+      "titulo": "Studio mobiliado perto da orla",
+      "finalidade": "Alugar",
+      "tipo": "Studio",
+      "status": "Disponível",
+      "bairro": "Rio Vermelho",
+      "cidade": "Salvador",
+      "preco": 2600,
+      "area": 32,
+      "quartos": 1,
+      "suites": 0,
+      "banheiros": 1,
+      "vagas": 0,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/predio-2.svg"
+      ],
+      "destaque": true
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1007",
+      "titulo": "Apartamento nascente com 3 suítes",
+      "finalidade": "Comprar",
+      "tipo": "Apartamento",
+      "status": "Disponível",
+      "bairro": "Itaigara",
+      "cidade": "Salvador",
+      "preco": 920000,
+      "area": 125,
+      "quartos": 3,
+      "suites": 3,
+      "banheiros": 4,
+      "vagas": 2,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/predio-1.svg"
+      ],
+      "destaque": false
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1008",
+      "titulo": "Terreno plano em condomínio",
+      "finalidade": "Comprar",
+      "tipo": "Terreno",
+      "status": "Disponível",
+      "bairro": "Vilas do Atlântico",
+      "cidade": "Lauro de Freitas",
+      "preco": 650000,
+      "area": 450,
+      "quartos": 0,
+      "suites": 0,
+      "banheiros": 0,
+      "vagas": 0,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/terreno-1.svg"
+      ],
+      "destaque": false
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1009",
+      "titulo": "Casa com quintal e espaço gourmet",
+      "finalidade": "Comprar",
+      "tipo": "Casa",
+      "status": "Disponível",
+      "bairro": "Itapuã",
+      "cidade": "Salvador",
+      "preco": 540000,
+      "area": 160,
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "vagas": 2,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/casa-1.svg"
+      ],
+      "destaque": false
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1010",
+      "titulo": "Apartamento de 1 quarto reformado",
+      "finalidade": "Alugar",
+      "tipo": "Apartamento",
+      "status": "Reservado",
+      "bairro": "Graça",
+      "cidade": "Salvador",
+      "preco": 2400,
+      "area": 52,
+      "quartos": 1,
+      "suites": 0,
+      "banheiros": 1,
+      "vagas": 1,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/predio-1.svg"
+      ],
+      "destaque": false
+    },
+    {
+      "publicado": true,
+      "codigo": "NN1011",
+      "titulo": "Apartamento frente mar com 4 quartos",
+      "finalidade": "Comprar",
+      "tipo": "Apartamento",
+      "status": "Vendido",
+      "bairro": "Armação",
+      "cidade": "Salvador",
+      "preco": 1150000,
+      "area": 150,
+      "quartos": 4,
+      "suites": 2,
+      "banheiros": 4,
+      "vagas": 2,
+      "descricao": "Imóvel de exemplo para teste do painel. Edite este texto no Pages CMS e veja a mudança aparecer no site.",
+      "fotos": [
+        "/assets/imoveis/predio-2.svg"
+      ],
+      "destaque": false
+    }
+  ]
+}
