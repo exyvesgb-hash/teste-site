@@ -1,0 +1,45 @@
+media:
+  input: assets/imoveis
+  output: /assets/imoveis
+content:
+  - name: imoveis
+    label: Imóveis
+    type: file
+    path: data/imoveis.json
+    fields:
+      - name: imoveis
+        label: Lista de imóveis
+        type: object
+        list: true
+        fields:
+          - { name: publicado, label: Aparece no site, type: boolean, default: true }
+          - { name: codigo, label: Código, type: string }
+          - { name: titulo, label: Título do anúncio, type: string }
+          - { name: finalidade, label: Finalidade, type: select, options: { values: [Comprar, Alugar] } }
+          - { name: tipo, label: Tipo, type: select, options: { values: [Apartamento, Casa, Cobertura, Sala, Studio, Terreno, Loja, Galpão] } }
+          - { name: status, label: Situação, type: select, options: { values: [Disponível, Reservado, Vendido, Alugado] } }
+          - { name: bairro, label: Bairro, type: string }
+          - { name: cidade, label: Cidade, type: string }
+          - { name: preco, label: Preço (R$), type: number }
+          - { name: area, label: Área (m²), type: number }
+          - { name: quartos, label: Quartos, type: number }
+          - { name: suites, label: Suítes, type: number }
+          - { name: banheiros, label: Banheiros, type: number }
+          - { name: vagas, label: Vagas, type: number }
+          - { name: descricao, label: Descrição, type: text }
+          - { name: fotos, label: Fotos (a primeira é a capa), type: image, list: true }
+          - { name: destaque, label: Mostrar em destaque na home, type: boolean }
+  - name: site
+    label: Dados da imobiliária
+    type: file
+    path: data/site.json
+    fields:
+      - { name: nome, label: Nome, type: string }
+      - { name: telefone, label: Telefone, type: string }
+      - { name: whatsapp_locacao, label: WhatsApp locação (só números, com 55), type: string }
+      - { name: whatsapp_vendas, label: WhatsApp vendas (só números, com 55), type: string }
+      - { name: endereco, label: Endereço, type: string }
+      - { name: horario, label: Horário de funcionamento, type: string }
+      - { name: creci, label: CRECI, type: string }
+      - { name: instagram, label: Link do Instagram, type: string }
+      - { name: facebook, label: Link do Facebook, type: string }
